@@ -2,7 +2,6 @@
 
 import Sliding from "@/components/sections/Sliding";
 import Features from "@/components/sections/Features";
-import MobileShowcase from "@/components/sections/MobileShowcase";
 import Gallery from "@/components/sections/Gallery";
 import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
@@ -12,6 +11,9 @@ import Logos from "@/components/sections/Logos";
 import CTA from "@/components/sections/CTA";
 import Benefits from "@/components/sections/Benefits/Benefits";
 import Container from "@/components/Container";
+import AboutSection from "@/components/sections/AboutSection";
+import TeamSection from "@/components/sections/TeamSection";
+import ContactSection from "@/components/sections/ContactSection";
 
 export default function Home() {
   return (
@@ -21,14 +23,16 @@ export default function Home() {
         <Hero/>
         <Logos/>
               <Container>
+        <Features />
         <Benefits />
         </Container>
 
         <Sliding />
-        <Features />
-        <MobileShowcase />
+        <AboutSection />
+        <TeamSection />
         <Gallery />
         <FAQ />
+        <ContactSection />
         <CTA/>
       </main>
       <Footer />
