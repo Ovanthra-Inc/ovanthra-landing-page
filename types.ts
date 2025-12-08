@@ -3,18 +3,7 @@ export interface IMenuItem {
     url: string;
 }
 
-export interface IBenefit {
-    title: string;
-    description: string;
-    imageSrc: string;
-    bullets: IBenefitBullet[]
-}
 
-export interface IBenefitBullet {
-    title: string;
-    description: string;
-    icon: JSX.Element;
-}
 
 export interface IPricing {
     name: string;
@@ -34,11 +23,6 @@ export interface ITestimonial {
     avatar: string;
 }
 
-export interface IStats {
-    title: string;
-    icon: JSX.Element;
-    description: string;
-}
 
 export interface ISocials {
     facebook?: string;
