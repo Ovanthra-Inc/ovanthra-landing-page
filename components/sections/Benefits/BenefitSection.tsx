@@ -6,31 +6,15 @@ import { cn } from "@/lib/utils"
 import BenefitBullet from "./BenefitBullet";
 import { IBenefit } from "@/types";
 import SectionTitle from "@/components/SectionTitle";
+import { fadeInUp, staggerContainer, viewportOnce } from "@/lib/animations";
 
 interface Props {
     benefit: IBenefit;
     imageAtRight?: boolean;
 }
 
-const containerVariants: Variants = {
-    offscreen: {
-        opacity: 0,
-        y: 100
-    },
-    onscreen: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            type: "spring" as const,
-            bounce: 0.2,
-            duration: 0.9,
-            delayChildren: 0.2,
-            staggerChildren: 0.1,
-        }
-    }
-};
-
-export const childVariants = {
+// Custom child variants for benefit bullets (slides from left)
+export const childVariants: Variants = {
     offscreen: {
         opacity: 0,
         x: -50,
@@ -41,7 +25,7 @@ export const childVariants = {
         transition: {
             type: "spring" as const,
             bounce: 0.2,
-            duration: 1,
+            duration: 0.8,
         }
     },
 };
@@ -53,10 +37,10 @@ const BenefitSection: React.FC<Props> = ({ benefit, imageAtRight }: Props) => {
         <section className="benefit-section">
             <motion.div
                 className="flex flex-wrap flex-col items-center justify-center gap-2 lg:flex-row lg:gap-20 lg:flex-nowrap mb-24"
-                variants={containerVariants}
+                variants={fadeInUp}
                 initial="offscreen"
                 whileInView="onscreen"
-                viewport={{ once: true }}
+                viewport={viewportOnce}
             >
                 <div
                     className={cn("flex flex-wrap items-center w-full max-w-lg", imageAtRight ? "justify-start" : "lg:order-1 justify-end")}

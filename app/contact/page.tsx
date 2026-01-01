@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/sections/Footer';
 import ContactSection from '@/components/sections/ContactSection';
 import FAQ from '@/components/sections/FAQ';
+import { siteDetails } from '@/data/siteDetails';
+
+export const metadata: Metadata = {
+  title: `Contact Us - ${siteDetails.siteName}`,
+  description: 'Get in touch with Ovanthra. Have questions about our AI automation platform or need support? We\'re here to help.',
+};
 
 export default function ContactPage() {
   return (

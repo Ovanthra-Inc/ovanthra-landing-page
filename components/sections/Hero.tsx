@@ -1,6 +1,10 @@
+"use client";
+
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'motion/react';
 import { heroDetails } from '@/data/hero';
+import { fadeInDown, fadeInUp, scaleIn, viewportOnce } from '@/lib/animations';
 
 const Hero: React.FC = () => {
     return (
@@ -17,19 +21,44 @@ const Hero: React.FC = () => {
             </div>
 
             <div className="text-center">
-                <h1 className="text-4xl md:text-6xl md:leading-tight font-bold text-foreground max-w-lg md:max-w-2xl mx-auto">{heroDetails.heading}</h1>
-                <p className="mt-4 text-foreground max-w-lg mx-auto">{heroDetails.subheading}</p>
-                <Image
-                    src={heroDetails.centerImageSrc}
-                    width={384}
-                    height={340}
-                    quality={100}
-                    sizes="(max-width: 768px) 100vw, 384px"
-                    priority={true}
-                    unoptimized={true}
-                    alt="Ovanthra AI platform mockup showcasing intelligent automation features"
+                <motion.h1 
+                    className="text-4xl md:text-6xl md:leading-tight font-bold text-foreground max-w-lg md:max-w-2xl mx-auto"
+                    variants={fadeInDown}
+                    initial="offscreen"
+                    animate="onscreen"
+                    viewport={viewportOnce}
+                >
+                    {heroDetails.heading}
+                </motion.h1>
+                <motion.p 
+                    className="mt-4 text-foreground max-w-lg mx-auto"
+                    variants={fadeInUp}
+                    initial="offscreen"
+                    animate="onscreen"
+                    viewport={viewportOnce}
+                    transition={{ delay: 0.2 }}
+                >
+                    {heroDetails.subheading}
+                </motion.p>
+                <motion.div
+                    variants={scaleIn}
+                    initial="offscreen"
+                    animate="onscreen"
+                    viewport={viewportOnce}
+                    transition={{ delay: 0.4 }}
                     className='relative mt-12 md:mt-16 mx-auto z-10'
-                />
+                >
+                    <Image
+                        src={heroDetails.centerImageSrc}
+                        width={384}
+                        height={340}
+                        quality={100}
+                        sizes="(max-width: 768px) 100vw, 384px"
+                        priority={true}
+                        unoptimized={true}
+                        alt="Ovanthra AI platform mockup showcasing intelligent automation features"
+                    />
+                </motion.div>
             </div>
         </section>
     );

@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'motion/react';
 import { MessageCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -8,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { fadeInUp, slideInRight, staggerContainer, staggerChild, viewportOnce } from '@/lib/animations';
 
 const faqs = [
   {
@@ -43,7 +45,13 @@ export default function FAQ() {
     <section className="py-20 md:min-h-screen md:flex md:items-center bg-white">
       <div className="container mx-auto px-4 w-full">
         <div className="flex flex-col lg:flex-row items-start gap-16 max-w-6xl mx-auto">
-          <div className="flex-1">
+          <motion.div 
+            className="flex-1"
+            variants={fadeInUp}
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={viewportOnce}
+          >
             <div className="flex items-center space-x-4 mb-6">
               <MessageCircle className="w-12 h-12 text-orange-500 stroke-[1.5]" />
             </div>
@@ -59,28 +67,48 @@ export default function FAQ() {
               size="lg"
               className="bg-orange-500 cursor-pointer hover:bg-orange-600 text-white px-8 py-3 text-base font-semibold rounded-full shadow-lg transition-all hover:scale-105"
             >
-              <a href="mailto:ovanthra@gmail.com">SEND US A MESSAGE</a>
+              <motion.a 
+                href="mailto:ovanthra@gmail.com"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                SEND US A MESSAGE
+              </motion.a>
             </Button>
-          </div>
+          </motion.div>
 
-          <div className="flex-1 w-full">
+          <motion.div 
+            className="flex-1 w-full"
+            variants={slideInRight}
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={viewportOnce}
+          >
             <Accordion type="single" collapsible className="w-full space-y-4">
               {faqs.map((faq, index) => (
-                <AccordionItem
+                <motion.div
                   key={index}
-                  value={`item-${index}`}
-                  className="border border-gray-200 rounded-lg bg-gray-50 px-6 data-[state=open]:bg-white transition-colors"
+                  variants={staggerChild}
+                  initial="offscreen"
+                  whileInView="onscreen"
+                  viewport={viewportOnce}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  <AccordionTrigger className="text-gray-800 font-semibold hover:text-orange-500 transition-colors text-left py-4">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-gray-600 leading-relaxed pb-4">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
+                  <AccordionItem
+                    value={`item-${index}`}
+                    className="border border-gray-200 rounded-lg bg-gray-50 px-6 data-[state=open]:bg-white transition-colors"
+                  >
+                    <AccordionTrigger className="text-gray-800 font-semibold hover:text-orange-500 transition-colors text-left py-4">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-gray-600 leading-relaxed pb-4">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                </motion.div>
               ))}
             </Accordion>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

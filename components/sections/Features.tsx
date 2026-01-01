@@ -1,48 +1,66 @@
 'use client';
 
-import { Telescope, Smartphone, FileSearch, Gauge } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Sparkles, Zap, Shield, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { fadeInUp, staggerContainer, staggerChild, viewportOnce } from '@/lib/animations';
 
 const features = [
   {
-    icon: Telescope,
-    title: 'Discover core features',
-    description: 'You can create awesome and powerful bootstrap landing pages with megapack and pixfort builder.',
+    icon: Sparkles,
+    title: 'AI-Powered Automation',
+    description: 'Streamline your workflows with intelligent automation that learns and adapts to your business needs. Reduce manual tasks by up to 80%.',
   },
   {
-    icon: Smartphone,
-    title: 'Make responsive pages',
-    description: 'You can create awesome and powerful bootstrap landing pages with megapack and pixfort builder.',
+    icon: Brain,
+    title: 'Intelligent Learning Platform',
+    description: 'Empower your team with personalized learning paths and AI-guided content generation. OneLearn adapts to each user\'s goals and performance.',
   },
   {
-    icon: FileSearch,
-    title: 'Access to source code',
-    description: 'You can create awesome and powerful bootstrap landing pages with megapack and pixfort builder.',
+    icon: Zap,
+    title: 'Real-Time Analytics',
+    description: 'Make data-driven decisions with dynamic dashboards and predictive insights. Monitor performance and stay ahead with AI-powered forecasts.',
   },
   {
-    icon: Gauge,
-    title: 'SEO optimized',
-    description: 'You can create awesome and powerful bootstrap landing pages with megapack and pixfort builder.',
+    icon: Shield,
+    title: 'Enterprise Security',
+    description: 'Built with security first. End-to-end encryption, biometric authentication, and AI threat detection keep your data safe at every layer.',
   },
 ];
 
 export default function Features() {
   return (
-    <section className="py-20 md:min-h-screen md:flex md:items-center bg-gray-50">
+    <section id="features" className="py-20 md:min-h-screen md:flex md:items-center bg-gray-50">
       <div className="container mx-auto px-4 w-full">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          variants={fadeInUp}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={viewportOnce}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-            Everything is Possible!
+            Everything is Possible with AI
           </h2>
           <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
-            From logo design to video animation, web development to website copy, expert designers
-            developers and digital talent are ready to complete your projects.
+            From intelligent automation to personalized learning, Ovanthra empowers businesses 
+            to work smarter, faster, and more efficiently. Transform your workflow with AI.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-12">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto mb-12"
+          variants={staggerContainer}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={viewportOnce}
+        >
           {features.map((feature, index) => (
-            <div key={index} className="flex items-start space-x-6">
+            <motion.div 
+              key={index} 
+              className="flex items-start space-x-6"
+              variants={staggerChild}
+            >
               <div className="flex-shrink-0">
                 <feature.icon className="w-16 h-16 text-orange-500 stroke-[1.5]" />
               </div>
@@ -54,19 +72,32 @@ export default function Features() {
                   {feature.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="text-center">
+        <motion.div 
+          className="text-center"
+          variants={fadeInUp}
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={viewportOnce}
+          transition={{ delay: 0.2 }}
+        >
           <Button
             asChild
             size="lg"
-            className="bg-orange-500 cursor-pointer hover:bg-orange-600 text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg transition-all hover:scale-105"
+            className="bg-orange-500 cursor-pointer hover:bg-orange-600 text-white px-12 py-6 text-lg font-semibold rounded-full shadow-lg transition-all"
           >
-            <a href="#cta">AUTOMATE YOUR THOUGHT</a>
+            <motion.a 
+              href="#cta"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              GET STARTED WITH AI
+            </motion.a>
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

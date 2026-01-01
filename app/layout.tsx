@@ -17,18 +17,16 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ovanthra - Professional Design & Web Services",
-  description:
-    "Expert designers and developers ready to complete your projects. From logo design to website development, we create stunning visuals and powerful digital solutions.",
-  keywords: "design, web development, landing pages, professional services",
+  title: siteDetails.metadata.title,
+  description: siteDetails.metadata.description,
+  keywords: "AI automation, intelligent learning, workflow automation, AI platform, business automation, OneLearn, enterprise AI",
   authors: [{ name: "Ovanthra" }],
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: "https://ovanthra.com",
-    title: "Ovanthra - Professional Design & Web Services",
-    description:
-      "Expert designers and developers ready to complete your projects.",
+    locale: siteDetails.locale,
+    url: siteDetails.siteUrl,
+    title: siteDetails.metadata.title,
+    description: siteDetails.metadata.description,
   },
 };
 
@@ -47,7 +45,7 @@ export default function RootLayout({
 
         <JsonLdScript
           data={{
-            "@context": "https://ovanthra.com",
+            "@context": "https://schema.org",
             "@type": "Organization",
             name: siteDetails.siteName,
             url: siteDetails.siteUrl,

@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/sections/Footer';
 import AboutSection from '@/components/sections/AboutSection';
 import TeamSection from '@/components/sections/TeamSection';
 import CTA from '@/components/sections/CTA';
+import { siteDetails } from '@/data/siteDetails';
+
+export const metadata: Metadata = {
+  title: `About Us - ${siteDetails.siteName}`,
+  description: 'Learn about Ovanthra\'s mission, values, and the talented team building the future of AI-powered automation and intelligent learning.',
+};
 
 export default function AboutPage() {
   return (

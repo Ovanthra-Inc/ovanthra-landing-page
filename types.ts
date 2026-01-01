@@ -35,3 +35,16 @@ export interface ISocials {
     x?: string;
     [key: string]: string | undefined;
 }
+
+export interface IBenefitBullet {
+    title: string;
+    description: string;
+    icon: React.ReactNode;
+}
+
+export interface IBenefit {
+    title: string;
+    description: string;
+    bullets: IBenefitBullet[];
+    imageSrc: string;
+}

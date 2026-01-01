@@ -96,10 +96,10 @@ useEffect(() => {
                             href="/"
                           >
                             <div className="mb-2 mt-4 text-lg font-medium">
-                              Finwise Pro
+                              {siteDetails.siteName}
                             </div>
                             <p className="text-sm text-muted-foreground">
-                              Advanced financial management for businesses
+                              AI-powered automation and intelligent learning platform
                             </p>
                           </Link>
                         </NavigationMenuLink>
@@ -129,15 +129,15 @@ useEffect(() => {
                               Enterprise Solutions
                             </div>
                             <p className="text-sm text-muted-foreground">
-                              Tailored financial solutions for large organizations
+                              Tailored AI-powered solutions for large organizations
                             </p>
                           </Link>
                         </NavigationMenuLink>
                       </li>
 
-                      <MenuLink href="#small-business" title="Small Business" desc="Perfect solutions for growing businesses" />
-                      <MenuLink href="#startups" title="Startups" desc="Financial tools designed for startups" />
-                      <MenuLink href="#individuals" title="Individuals" desc="Personal finance management made easy" />
+                      <MenuLink href="/solutions#small-business" title="Small Business" desc="Perfect AI solutions for growing businesses" />
+                      <MenuLink href="/solutions#startups" title="Startups" desc="AI automation tools designed for startups" />
+                      <MenuLink href="/solutions#individuals" title="Individuals" desc="Personal AI assistant for productivity" />
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -165,9 +165,9 @@ useEffect(() => {
                         </NavigationMenuLink>
                       </li>
 
-                      <MenuLink href="#blog" title="Blog" desc="Latest insights and financial tips" />
-                      <MenuLink href="#documentation" title="Documentation" desc="Complete API and user documentation" />
-                      <MenuLink href="#support" title="Support" desc="Get help from our support team" />
+                      <MenuLink href="/resources#blog" title="Blog" desc="Latest insights and AI automation tips" />
+                      <MenuLink href="/resources#documentation" title="Documentation" desc="Complete API and user documentation" />
+                      <MenuLink href="/resources#support" title="Support" desc="Get help from our support team" />
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -195,9 +195,9 @@ useEffect(() => {
                         </NavigationMenuLink>
                       </li>
 
-                      <MenuLink href="#careers" title="Careers" desc="Join our team and grow with us" />
-                      <MenuLink href="#contact" title="Contact" desc="Get in touch with our team" />
-                      <MenuLink href="#news" title="News & Updates" desc="Stay updated with our latest news" />
+                      <MenuLink href="/about#team" title="Team" desc="Meet our talented team members" />
+                      <MenuLink href="/contact" title="Contact" desc="Get in touch with our team" />
+                      <MenuLink href="/resources#blog" title="Blog" desc="Latest insights and updates" />
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>
@@ -207,9 +207,14 @@ useEffect(() => {
             <Button
               asChild
               size="lg"
-              className="text-white bg-primary hover:bg-primary/90 px-8 rounded-full transition-all hover:scale-105"
+              className="text-white bg-primary hover:bg-primary/90 px-8 rounded-full transition-all"
             >
-              <Link href="#cta">Get Started</Link>
+              <Link 
+                href="#cta"
+                className="transition-transform hover:scale-105 active:scale-95"
+              >
+                Get Started
+              </Link>
             </Button>
           </div>
 
@@ -241,14 +246,14 @@ useEffect(() => {
           className="md:hidden bg-white shadow-lg border-t max-h-screen overflow-y-auto"
         >
           <nav className="flex flex-col space-y-1 pt-2 pb-6 px-4">
-            <MobileItem href="/">Products</MobileItem>
-            <MobileItem href="/solutions">Solutions</MobileItem>
-            <MobileItem href="/resources">Resources</MobileItem>
-            <MobileItem href="/about">Company</MobileItem>
+            <MobileItem href="/" onClick={toggleMenu}>Products</MobileItem>
+            <MobileItem href="/solutions" onClick={toggleMenu}>Solutions</MobileItem>
+            <MobileItem href="/resources" onClick={toggleMenu}>Resources</MobileItem>
+            <MobileItem href="/about" onClick={toggleMenu}>Company</MobileItem>
 
             {/* CTA */}
             <div className="pt-4">
-              <Button asChild size="lg" className="w-full bg-primary text-white rounded-full">
+              <Button asChild size="lg" className="w-full bg-primary text-white rounded-full transition-all hover:scale-105 active:scale-95">
                 <Link href="#cta" onClick={toggleMenu}>Get Started</Link>
               </Button>
             </div>
@@ -274,13 +279,19 @@ useEffect(() => {
       </Transition>
     </header>
   );
-};
+}
 
 export default Header;
 
 /* ------------ SMALL HELPER COMPONENTS ------------- */
 
-const MenuLink = ({ href, title, desc }: any) => (
+interface MenuLinkProps {
+  href: string;
+  title: string;
+  desc: string;
+}
+
+const MenuLink: React.FC<MenuLinkProps> = ({ href, title, desc }) => (
   <li>
     <NavigationMenuLink asChild>
       <Link
@@ -294,10 +305,16 @@ const MenuLink = ({ href, title, desc }: any) => (
   </li>
 );
 
-const MobileItem = ({ href, children }: any) => (
+interface MobileItemProps {
+  href: string;
+  children: React.ReactNode;
+  onClick?: () => void;
+}
+
+const MobileItem: React.FC<MobileItemProps> = ({ href, children, onClick }) => (
   <Link
     href={href}
-    onClick={() => {}}
+    onClick={onClick}
     className="text-foreground hover:text-primary hover:bg-accent block px-3 py-2.5 rounded-md font-medium"
   >
     {children}

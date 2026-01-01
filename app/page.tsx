@@ -5,6 +5,8 @@ import Footer from "@/components/sections/Footer";
 import Hero from "@/components/sections/Hero";
 import Logos from "@/components/sections/Logos";
 import Benefits from "@/components/sections/Benefits/Benefits";
+import Pricing from "@/components/sections/Pricing";
+import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import CTA from "@/components/sections/CTA";
 import Container from "@/components/Container";
@@ -25,6 +27,11 @@ export default function Home() {
         </Container>
 
         <Stats />
+        
+        <Pricing />
+        
+        <Testimonials />
+        
         <FAQ />
 
         <Container className="py-10 md:py-20">

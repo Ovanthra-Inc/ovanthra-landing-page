@@ -1,6 +1,10 @@
+"use client";
+
+import { motion } from "motion/react";
 import { ctaDetails } from "@/data/cta"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { fadeInUp, viewportOnce } from "@/lib/animations"
 
 const CTA: React.FC = () => {
     return (
@@ -11,21 +15,48 @@ const CTA: React.FC = () => {
                         <div className="rounded-3xl absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_600px_at_50%_500px,#1C1C02,transparent)]"></div>
                     </div>
 
-                    <div className="h-full flex flex-col items-center justify-center text-white text-center px-5">
-                        <h2 className="text-2xl sm:text-3xl md:text-5xl md:leading-tight font-semibold mb-4 max-w-2xl">{ctaDetails.heading}</h2>
+                    <motion.div 
+                        className="h-full flex flex-col items-center justify-center text-white text-center px-5"
+                        variants={fadeInUp}
+                        initial="offscreen"
+                        whileInView="onscreen"
+                        viewport={viewportOnce}
+                    >
+                        <motion.h2 
+                            className="text-2xl sm:text-3xl md:text-5xl md:leading-tight font-semibold mb-4 max-w-2xl"
+                            variants={fadeInUp}
+                        >
+                            {ctaDetails.heading}
+                        </motion.h2>
 
-                        <p className="mx-auto max-w-xl md:px-5">{ctaDetails.subheading}</p>
+                        <motion.p 
+                            className="mx-auto max-w-xl md:px-5"
+                            variants={fadeInUp}
+                            transition={{ delay: 0.1 }}
+                        >
+                            {ctaDetails.subheading}
+                        </motion.p>
 
-                        <div className="mt-4 flex flex-col sm:flex-row items-center sm:gap-4">
+                        <motion.div 
+                            className="mt-4 flex flex-col sm:flex-row items-center sm:gap-4"
+                            variants={fadeInUp}
+                            transition={{ delay: 0.2 }}
+                        >
                             <Button 
                                 asChild
                                 size="lg"
-                                className={cn("bg-white text-black hover:bg-white/90 rounded-full")}
+                                className={cn("bg-white text-black hover:bg-white/90 rounded-full transition-all")}
                             >
-                                <a href="mailto:ovanthra@gmail.com">Get Started</a>
+                                <motion.a 
+                                    href="mailto:ovanthra@gmail.com"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    Get Started
+                                </motion.a>
                             </Button>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </div>
             </div>
         </section>
