@@ -142,36 +142,6 @@ useEffect(() => {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
-                {/* RESOURCES */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent transition-colors">
-                    Resources
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[500px] gap-3 p-4 md:grid-cols-2 lg:w-[600px]">
-                      <li className="row-span-3">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            className="flex h-full w-full flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 hover:shadow-lg transition-shadow"
-                            href="/resources"
-                          >
-                            <div className="mb-2 mt-4 text-lg font-medium">
-                              Learning Center
-                            </div>
-                            <p className="text-sm text-muted-foreground">
-                              Comprehensive guides and tutorials
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-
-                      <MenuLink href="/resources#blog" title="Blog" desc="Latest insights and AI automation tips" />
-                      <MenuLink href="/resources#documentation" title="Documentation" desc="Complete API and user documentation" />
-                      <MenuLink href="/resources#support" title="Support" desc="Get help from our support team" />
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
                 {/* COMPANY */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="text-foreground hover:text-primary bg-transparent transition-colors">
@@ -197,7 +167,6 @@ useEffect(() => {
 
                       <MenuLink href="/about#team" title="Team" desc="Meet our talented team members" />
                       <MenuLink href="/contact" title="Contact" desc="Get in touch with our team" />
-                      <MenuLink href="/resources#blog" title="Blog" desc="Latest insights and updates" />
                     </ul>
                   </NavigationMenuContent>
                 </NavigationMenuItem>

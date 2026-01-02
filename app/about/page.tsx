@@ -22,7 +22,9 @@ export default function AboutPage() {
         </div>
         <AboutSection />
         <TeamSection />
-        <CTA />
+        <div className="px-24">
+          <CTA />
+        </div>
       </main>
       <Footer />
     </div>
