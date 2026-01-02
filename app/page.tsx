@@ -1,5 +1,3 @@
-"use client";
-
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import Hero from "@/components/sections/Hero";
@@ -22,7 +20,7 @@ export default function Home() {
 
         <Logos />
 
-        <Container className="py-10 md:py-20">
+        <Container>
           <Benefits />
         </Container>
 
