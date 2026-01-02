@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { fadeInUp, staggerContainer, staggerChild, viewportOnce } from '@/lib/animations';
 
