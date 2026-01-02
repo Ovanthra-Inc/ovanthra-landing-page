@@ -14,6 +14,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import {
+  NavigationMenu,
+  NavigationMenuList,
+} from '@/components/ui/navigation-menu';
 import NavLink from './NavLink';
 
 const Header = () => {
@@ -67,11 +71,15 @@ const Header = () => {
         </Link>
 
         <nav className="hidden md:flex items-center space-x-6">
-          {navItems.map((item) => (
-            <NavLink key={item.href} href={item.href} subItems={item.subItems}>
-              {item.label}
-            </NavLink>
-          ))}
+          <NavigationMenu>
+            <NavigationMenuList>
+              {navItems.map((item) => (
+                <NavLink key={item.href} href={item.href} subItems={item.subItems}>
+                  {item.label}
+                </NavLink>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
         </nav>
 
         <div className="hidden md:block">
