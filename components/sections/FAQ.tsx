@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { fadeInUp, staggerContainer, staggerChild, viewportOnce } from '@/lib/animations';
+import { fadeInUp, slideInRight, staggerContainer, staggerChild, viewportOnce } from '@/lib/animations';
 
 const faqs = [
   {
@@ -79,7 +79,7 @@ export default function FAQ() {
 
           <motion.div 
             className="flex-1 w-full"
-            variants={fadeInUp}
+            variants={slideInRight}
             initial="offscreen"
             whileInView="onscreen"
             viewport={viewportOnce}
