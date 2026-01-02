@@ -4,7 +4,7 @@ import "./globals.css";
 import { JsonLdScript } from "@/components/JsonLdScript";
 import { siteDetails } from "@/data/siteDetails";
 import { Toaster } from "@/components/ui/sonner";
-import SmoothScroll from "@/components/ui/SmoothScroll";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,9 +40,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <SmoothScroll>
-          {children}
-        </SmoothScroll>
+        {children}
         <Toaster />
 
         <JsonLdScript
