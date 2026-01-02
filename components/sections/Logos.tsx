@@ -2,7 +2,7 @@
 
 import { motion } from 'motion/react';
 import { cn } from '@/lib/utils';
-import { fadeIn, staggerContainer, staggerChild, viewportOnce } from '@/lib/animations';
+import { fadeInUp, staggerContainer, staggerChild, viewportOnce } from '@/lib/animations';
 
 const Logos: React.FC = () => {
     const logos = Array.from({ length: 5 }); // 5 logo placeholders
@@ -11,7 +11,7 @@ const Logos: React.FC = () => {
         <section id="logos" className={cn("py-20 px-5 bg-background")}>
             <motion.p 
                 className="text-lg font-medium text-center mb-10"
-                variants={fadeIn}
+                variants={fadeInUp}
                 initial="offscreen"
                 whileInView="onscreen"
                 viewport={viewportOnce}
