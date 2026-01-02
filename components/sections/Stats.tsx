@@ -1,59 +1,41 @@
-"use client";
+'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { motion, useInView, useSpring } from 'framer-motion';
+import React from 'react';
+import { motion } from 'motion/react';
+import Container from '@/components/Container';
 import { stats } from '@/data/stats';
-import { staggerContainer, viewportOnce } from '@/lib/animations';
-
-const AnimatedNumber = ({ value }: { value: number }) => {
-    const ref = useRef<HTMLSpanElement>(null);
-    const motionValue = useSpring(0, { damping: 100, stiffness: 100 });
-
-    useEffect(() => {
-        motionValue.on("change", (latest) => {
-            if (ref.current) {
-                ref.current.textContent = Intl.NumberFormat("en-US").format(latest.toFixed(0));
-            }
-        });
-    }, [motionValue]);
-
-    useEffect(() => {
-        motionValue.set(value);
-    }, [motionValue, value]);
-
-    return <span ref={ref} />;
-}
-
+import { staggerContainer, staggerChild, viewportOnce } from '@/lib/animations';
 
 const Stats: React.FC = () => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true });
-
     return (
-        <section className="bg-gray-900 py-12" ref={ref}>
-            <motion.div
-                variants={staggerContainer(0.2)}
-                initial="offscreen"
-                whileInView="onscreen"
-                viewport={viewportOnce}
-                className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8"
-            >
-                {stats.map((stat, index) => {
-                    const numericValue = parseFloat(stat.value.replace(/[^0-9.]/g, ''));
-                    return (
+        <section className="py-10 bg-orange-500 text-white">
+            <Container>
+                <motion.div 
+                    className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/20"
+                    variants={staggerContainer}
+                    initial="offscreen"
+                    whileInView="onscreen"
+                    viewport={viewportOnce}
+                >
+                    {stats.map((stat, index) => (
                         <motion.div 
-                            key={index}
-                            className="text-center p-4 rounded-lg border border-orange-500/50"
+                            key={index} 
+                            className="p-4 flex flex-col items-center justify-center"
+                            variants={staggerChild}
                         >
-                            <h3 className="text-4xl font-bold text-white">
-                                {isInView && <AnimatedNumber value={numericValue} />}
-                                {stat.value.replace(/[0-9.]/g, '')}
-                            </h3>
-                            <p className="text-orange-400">{stat.label}</p>
+                            <motion.div 
+                                className="mb-2 p-3 bg-white/20 rounded-full text-white"
+                                whileHover={{ scale: 1.1, rotate: 5 }}
+                                transition={{ type: "spring", stiffness: 400 }}
+                            >
+                                {React.cloneElement(stat.icon, { className: "text-white w-6 h-6" })}
+                            </motion.div>
+                            <h3 className="text-4xl font-bold mb-1">{stat.title}</h3>
+                            <p className="text-white/80 text-sm max-w-[200px]">{stat.description}</p>
                         </motion.div>
-                    )
-                })}
-            </motion.div>
+                    ))}
+                </motion.div>
+            </Container>
         </section>
     );
 };
